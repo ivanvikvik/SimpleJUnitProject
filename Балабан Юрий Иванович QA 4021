@@ -1,0 +1,276 @@
+public class Person {
+    private String fullName;
+    private int age;
+    private boolean retired;
+
+    public Person() {
+    }
+
+    public Person(String fullName, int age, boolean retired) {
+        this.fullName = fullName;
+        this.age = age;
+        this.retired = retired;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public boolean isRetired() {
+        return retired;
+    }
+
+    public void setRetired(boolean retired) {
+        this.retired = retired;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{"
+                + "fullName='" + fullName + '\''
+                + ", age=" + age
+                + ", retired=" + retired
+                + '}';
+    }
+}
+package com.company.professions;
+
+import oop.Person;
+
+public class Driver extends Person {
+    private int experience;
+
+    public Driver(String fullName, int age, boolean retired, int experience) {
+        super(fullName, age, retired);
+        this.experience = experience;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "experience='" + experience + '\'' +
+                "} " + super.toString();
+    }
+}
+package com.company.details;
+
+public class Engine {
+    private String power;
+    private String producer;
+
+    public Engine(String power, String producer) {
+        this.power = power;
+        this.producer = producer;
+    }
+
+    public String getPower() {
+        return power;
+    }
+
+    public void setPower(String power) {
+        this.power = power;
+    }
+
+    public String getProducer() {
+        return producer;
+    }
+
+    public void setProducer(String producer) {
+        this.producer = producer;
+    }
+
+    @Override
+    public String toString() {
+        return "Engine{" +
+                "power='" + power + '\'' +
+                ", producer='" + producer + '\'' +
+                '}';
+    }
+}
+package com.company.vehicles;
+
+import com.company.details.Engine;
+import com.company.professions.Driver;
+
+public class Car {
+    private String producer;
+    private String aClass;
+    private double weight;
+    private Driver driver;
+    private Engine engine;
+
+    public Car(String producer, String aClass, double weight, Driver driver, Engine engine) {
+        this.producer = producer;
+        this.aClass = aClass;
+        this.weight = weight;
+        this.driver = driver;
+        this.engine = engine;
+    }
+
+    public String getProducer() {
+        return producer;
+    }
+
+    public void setProducer(String producer) {
+        this.producer = producer;
+    }
+
+    public String getaClass() {
+        return aClass;
+    }
+
+    public void setaClass(String aClass) {
+        this.aClass = aClass;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+    public void start() {
+        System.out.println("Start");
+    }
+
+    public void stop() {
+        System.out.println("Stop");
+    }
+
+    public void turnRight() {
+        System.out.println("TurnRight");
+    }
+
+    public void turnLeft() {
+        System.out.println("Turnleft");
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "producer='" + producer + '\'' +
+                ", aClass='" + aClass + '\'' +
+                ", weight=" + weight +
+                ", driver=" + driver +
+                ", engine=" + engine +
+                '}';
+    }
+}
+package com.company.vehicles;
+
+import com.company.details.Engine;
+import com.company.professions.Driver;
+
+public class SportCar extends Car {
+    private double speed;
+
+    public SportCar(String producer, String aClass, double weight, Driver driver, Engine engine, double speed) {
+        super(producer, aClass, weight, driver, engine);
+        this.speed = speed;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
+    @Override
+    public String toString() {
+        return "SportCar{" +
+                "speed=" + speed +
+                "} " + super.toString();
+    }
+}
+package com.company.vehicles;
+
+import com.company.details.Engine;
+import com.company.professions.Driver;
+
+public class Lorry extends Car {
+    private double liftingCapacity;
+
+    public Lorry(String producer, String aClass, double weight, Driver driver, Engine engine, double liftingCapacity) {
+        super(producer, aClass, weight, driver, engine);
+        this.liftingCapacity = liftingCapacity;
+    }
+
+    public double getLiftingCapacity() {
+        return liftingCapacity;
+    }
+
+    public void setLiftingCapacity(double liftingCapacity) {
+        this.liftingCapacity = liftingCapacity;
+    }
+
+    @Override
+    public String toString() {
+        return "Lorry{" +
+                "liftingCapacity=" + liftingCapacity +
+                "} " + super.toString();
+    }
+}
+package com.company.vehicles;
+
+import com.company.details.Engine;
+import com.company.professions.Driver;
+
+public class CarDemo {
+    public static void main(String[] args) {
+        Driver bmwDriver = new Driver("Peter", 50, false, 30);
+        Engine bmwEngine = new Engine("60", "BMW");
+        Car car = new Car("BMW", "C", 5000, bmwDriver, bmwEngine);
+
+        Driver lorryDriver = new Driver("Mike", 45, false, 20);
+        Engine lorryEngine = new Engine("30", "LorryEngine");
+        Lorry lorry = new Lorry("Lorry", "D", 8000, lorryDriver, lorryEngine, 70);
+
+        Driver sportDriver = new Driver("Bob", 30, false, 15);
+        Engine sportEngine = new Engine("80", "SportEngine");
+        SportCar sportCar = new SportCar("SportCar", "C", 4000, sportDriver, sportEngine, 300);
+
+        System.out.println(car);
+        System.out.println(lorry);
+        System.out.println(sportCar);
+    }
+}
